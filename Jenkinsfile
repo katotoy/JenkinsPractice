@@ -29,7 +29,7 @@ pipeline {
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'mkdir new_config'
                     sh "cd ${SOURCE_DIR}"
-                    sh 'ls'
+                    sh 'ls -al'
                 }
             }
         }
