@@ -6,7 +6,7 @@ import time
 from os import path
 
 #default folder where config is copied and config values are applied
-baseDirectory =  "g:\jenkins_workspace"
+baseDirectory =  "./jenkins_workspace"
 
 #Number of seconds of two days
 # epochDiffLimit = 172800
