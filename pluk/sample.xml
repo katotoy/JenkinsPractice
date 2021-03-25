@@ -1,0 +1,7 @@
+<node>
+    <setting1>${ip_address}</setting1>
+
+    <server>
+        ${port}
+    </server>
+</node>

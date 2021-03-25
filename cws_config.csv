@@ -1,3 +1,6 @@
 node_id,setting_name,value
 all,ocee_license,12345
 pluk-68,ip_address,192.168.0.15
+pluk-68,port,8084
+pluk-69,ip_address,192.168.0.16
+pluk-69,port,8095
