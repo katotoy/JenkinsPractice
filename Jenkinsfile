@@ -22,7 +22,7 @@ pipeline {
                     ])                
 
                      environment {
-                        SOURCE_DIR = '${params.lbu}-${params.ServerNode}'
+                        SOURCE_DIR = "${params.lbu}-${params.ServerNode}"
                      }
                     echo 'Preparing config files for ${SOURCE_DIR}.'
                     sh 'mkdir new_config'
