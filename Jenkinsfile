@@ -21,8 +21,10 @@ pipeline {
                         ])
                     ])                
 
+                    sh "echo sh isBar is ${params.lbu}"
+
                      environment {
-                        SOURCE_DIR = "${params.lbu}-${params.ServerNode}"
+                        SOURCE_DIR = "${params.lbu}-${params.serverNode}"
                      }
                     echo 'Preparing config files for ${SOURCE_DIR}.'
                     sh 'mkdir new_config'
