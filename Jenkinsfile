@@ -11,6 +11,11 @@ pipeline {
         }
 
         stage('Generating Config Files'){
+
+            environment {
+                SOURCE_DIR = sh(script: "echo ${params.lbu}-${params.serverNode}", , returnStdout: true).trim()
+            }
+
             steps {
                 
                 script {
@@ -21,11 +26,6 @@ pipeline {
                         ])
                     ])                
 
-                    sh "echo sh isBar is ${params.lbu}"
-
-                     environment {
-                        SOURCE_DIR = "${params.lbu}-${params.serverNode}"
-                     }
                     echo 'Preparing config files for ${SOURCE_DIR}.'
                     sh 'mkdir new_config'
                     sh 'cd ${SOURCE_DIR}'
