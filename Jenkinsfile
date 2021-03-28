@@ -41,7 +41,11 @@ pipeline {
         }
 
         stage('Generating Config Files'){
-            sh "./replaceTest.py ${TARGET_NODE}"
+            steps {
+                echo 'Replacing values'
+                sh "./replaceTest.py ${TARGET_NODE}"
+            }
+            
         }
 
 
