@@ -1,4 +1,4 @@
-def CONFIG_DIR="/tmp/config_files" 
+def CONFIG_DIR="/tmp/config_files/" 
 
 pipeline {
     agent any
@@ -33,7 +33,7 @@ pipeline {
                     sh "mkdir ${CONFIG_DIR}"
                     sh 'ls -ll'
                     echo 'Copying templates config to target directory'
-                    sh "cp -R ./${params.LBU}/. /${CONFIG_DIR}/"
+                    sh "cp -vR ./${params.LBU}/. ${CONFIG_DIR}"
                     sh "ls -ll ${CONFIG_DIR}"
                 }
             }
