@@ -29,8 +29,9 @@ pipeline {
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh 'mkdir config_files'
+                    sh 'ls -ll'
                     echo 'Copying templates config to target directory'
-                    sh "cp -R /${params.LBU}/. /config_files/"
+                    sh "cp -R ./${params.LBU}/. /config_files/"
                     
                 }
             }
