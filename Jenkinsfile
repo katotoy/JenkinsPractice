@@ -21,7 +21,7 @@ pipeline {
                 script {
                     properties([
                         parameters([
-                            choice(choices: ['pluk', 'pcalt', 'pamb', 'plai'],  name: 'LBU'),
+                            choice(choices: ['PLUK', 'PCALT', 'PAMB', 'PLAI'],  name: 'LBU'),
                             choice(choices: ['100', '101', '68', '69'],  name: 'SERVER_NODE')
                         ])
                     ])                
@@ -29,10 +29,8 @@ pipeline {
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh 'mkdir config_files'
-                    sh "cd ${SOURCE_DIR}"
-                    sh 'ls -al'
-                    sh 'pwd'
                     echo 'Copying templates config to target directory'
+                    sh "cp -R /${params.LBU}/. /config_files/"
                     
                 }
             }
