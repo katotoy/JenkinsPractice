@@ -1,11 +1,9 @@
+def CONFIG_DIR="/tmp/config_files" 
+
 pipeline {
     agent any
 
     stages {
-
-        environment {
-                CONFIG_DIR="/tmp/config_files" 
-        }
 
         stage('Pull Code'){
             steps {
