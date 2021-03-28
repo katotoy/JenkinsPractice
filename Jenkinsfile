@@ -13,7 +13,7 @@ pipeline {
         stage('Generating Config Files'){
 
             environment {
-                SOURCE_DIR = sh(script: "echo ${params.lbu}-${params.serverNode}", , returnStdout: true).trim()
+                SOURCE_DIR = sh(script: "echo ${params.LBU}-${params.SERVER_NODE}", , returnStdout: true).trim()
             }
 
             steps {
@@ -21,17 +21,23 @@ pipeline {
                 script {
                     properties([
                         parameters([
-                            choice(choices: ['pluk', 'pcalt', 'pamb', 'plai'],  name: 'lbu'),
-                            choice(choices: ['100', '101', '68', '69'],  name: 'serverNode')
+                            choice(choices: ['pluk', 'pcalt', 'pamb', 'plai'],  name: 'LBU'),
+                            choice(choices: ['100', '101', '68', '69'],  name: 'SERVER_NODE')
                         ])
                     ])                
 
                     echo "Preparing config files for ${SOURCE_DIR}."
-                    sh 'mkdir new_config'
+                    sh 'pwd'
+                    sh 'mkdir config_files'
                     sh "cd ${SOURCE_DIR}"
                     sh 'ls -al'
+                    sh 'pwd'
+                    echo 'Copying templates config to target directory'
+                    
                 }
             }
         }
+
+
     }
 }
