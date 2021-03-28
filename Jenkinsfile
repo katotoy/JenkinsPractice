@@ -1,5 +1,5 @@
 def CONFIG_DIR="/tmp/config_files/" 
-
+def TARGET_NODE="" 
 pipeline {
     agent any
 
@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('Generating Config Files'){
+        stage('Copying Template Folder'){
 
             environment {
                 SOURCE_DIR = sh(script: "echo ${params.LBU}-${params.SERVER_NODE}", , returnStdout: true).trim()
@@ -28,7 +28,7 @@ pipeline {
                             choice(choices: ['100', '101', '68', '69'],  name: 'SERVER_NODE')
                         ])
                     ])                
-
+                    TARGET_NODE = SOURCE_DIR
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh "mkdir ${CONFIG_DIR}"
@@ -38,6 +38,10 @@ pipeline {
                     sh "ls -ll ${CONFIG_DIR}"
                 }
             }
+        }
+
+        stage('Generating Config Files'){
+            sh "./replaceTest.py ${TARGET_NODE}"
         }
 
 

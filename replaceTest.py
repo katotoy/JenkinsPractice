@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 import re
 import sys
 import os
@@ -6,7 +6,7 @@ import time
 from os import path
 
 #default folder where config is copied and config values are applied
-baseDirectory =  "./jenkins_workspace"
+baseDirectory =  "/tmp/config_files/"
 
 #Number of seconds of two days
 # epochDiffLimit = 172800
@@ -138,11 +138,11 @@ def getNodeSettings(nodeId):
 
 def validateNodeId(sysargs):
     
-    # if(len(sysargs) <= 1):
-    #     raise Exception('Invalid NodeId value')
-    # return sysargs[1]
+    if(len(sysargs) <= 1):
+        raise Exception('Invalid NodeId value')
+    return sysargs[1]
 
-    return 'pluk-69'
+    # return 'pluk-69'
 
 def getTargetDirectoryContents():
 
