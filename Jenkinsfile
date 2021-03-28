@@ -43,6 +43,7 @@ pipeline {
         stage('Generating Config Files'){
             steps {
                 echo 'Replacing values'
+                sh 'chmod +x replaceTest.py'
                 sh "./replaceTest.py ${TARGET_NODE}"
             }
             
