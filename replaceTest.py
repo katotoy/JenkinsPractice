@@ -124,10 +124,12 @@ def getNodeSettings(nodeId):
 
     print('Reading csv configuration file..')
     csvSettings = createConfigurationKeyValueMap()
+    print(csvSettings)
 
     #filter: get only applicable settings including 'all'
     csvSettings = [setting for setting in csvSettings if setting[0] == nodeId or setting[0] == 'all']
-
+    print(csvSettings)
+    
     if not isNodeHasOtherDefineSettings(csvSettings, nodeId):
         raise Exception('No settings found for nodeId: {0}.'.format(nodeId))
 
