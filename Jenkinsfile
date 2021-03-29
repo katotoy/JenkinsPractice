@@ -69,8 +69,8 @@ pipeline {
                         remote.user = userName
                         remote.identityFile = identifyFile
                         stage("SSH Steps Rocks!") {
-                            writeFile file: 'test.sh', text: 'ls'
-                            sshPut remote: remote, from: 'test.sh', into: '/tmp/test'
+                            
+                            sshPut remote: remote, from: CONFIG_DIR, into: '/tmp/'
                         }
                     }
                 }
