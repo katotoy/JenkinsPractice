@@ -54,6 +54,8 @@ pipeline {
         stage('Copying config files'){
             steps {
                 script {
+
+                    echo "TARGET_HOST: ${TARGET_HOST}"
                     def TARGET_HOST_IP = [100: '192.168.0.15', 101: '192.168.0.16', 68: '192.168.0.17']
                     
                     def remote = [:]
