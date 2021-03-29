@@ -30,7 +30,7 @@ pipeline {
                         ])
                     ])                
                     TARGET_NODE = SOURCE_DIR
-                    TARGET_HOST = params.SERVER_NODE
+                    TARGET_HOST = "${params.SERVER_NODE}"
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh "mkdir ${CONFIG_DIR}"
@@ -66,7 +66,8 @@ pipeline {
                         remote.user = userName
                         remote.identityFile = identifyFile
                         stage("SSH Steps Rocks!") {
-                            sshPut remote: remote, from: 'abc.sh', into: '/var/www/'
+                            writeFile file: 'test.sh', text: 'ls'
+                            sshPut remote: remote, from: 'test.sh', into: '/tmp/test'
                         }
                     }
                 }
