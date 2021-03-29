@@ -1,5 +1,6 @@
 def CONFIG_DIR="/tmp/config_files/" 
-def TARGET_NODE="" 
+def TARGET_NODE=""
+def TARGET_HOST="" 
 pipeline {
     agent any
 
@@ -29,6 +30,7 @@ pipeline {
                         ])
                     ])                
                     TARGET_NODE = SOURCE_DIR
+                    TARGET_HOST = params.SERVER_NODE
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh "mkdir ${CONFIG_DIR}"
@@ -49,6 +51,27 @@ pipeline {
             
         }
 
+        stage('Copying config files'){
+            steps {
+                script {
+                    def TARGET_HOST_IP = [100: '192.168.0.15', 101: '192.168.0.16', 68: '192.168.0.17']
+                    
+                    def remote = [:]
+                        remote.name = "targetHost"
+                        remote.host = TARGET_HOST_IP[TARGET_HOST] 
+                        remote.allowAnyHosts = true
+
+                    echo "remotehost: ${remote.host}"
+                    withCredentials([sshUserPrivateKey(credentialsId: '76521a13-a26d-485e-90c9-5ec5ad0f3d67', keyFileVariable: 'identifyFile', passphraseVariable: '', usernameVariable: 'userName')]) {
+                        remote.user = userName
+                        remote.identityFile = identifyFile
+                        stage("SSH Steps Rocks!") {
+                            sshPut remote: remote, from: 'abc.sh', into: '/var/www/'
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }
