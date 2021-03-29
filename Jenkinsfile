@@ -31,7 +31,7 @@ pipeline {
                     ])                
                     TARGET_NODE = SOURCE_DIR
                     TARGET_HOST = sh(script: "echo ${params.SERVER_NODE}", , returnStdout: true).trim()
-                    
+
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh "mkdir ${CONFIG_DIR}"
@@ -61,7 +61,7 @@ pipeline {
                     
                     def remote = [:]
                         remote.name = "targetHost"
-                        remote.host = TARGET_HOST_IP[TARGET_HOST] 
+                        remote.host = TARGET_HOST_IP["${TARGET_HOST}"] 
                         remote.allowAnyHosts = true
 
                     echo "remotehost: ${remote.host}"
