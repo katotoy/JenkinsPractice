@@ -57,11 +57,11 @@ pipeline {
                 script {
 
                     echo "TARGET_HOST: ${TARGET_HOST}"
-                    def TARGET_HOST_IP = [100: '192.168.0.15', 101: '192.168.0.16', 68: '192.168.0.17']
+                    def TARGET_HOST_IP = ['100': '192.168.0.15', '101': '192.168.0.16', '68': '192.168.0.17']
                     
                     def remote = [:]
                         remote.name = "targetHost"
-                        remote.host = TARGET_HOST_IP["${TARGET_HOST}"] 
+                        remote.host = TARGET_HOST_IP[TARGET_HOST] 
                         remote.allowAnyHosts = true
 
                     echo "remotehost: ${remote.host}"
