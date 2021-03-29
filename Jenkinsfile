@@ -18,6 +18,7 @@ pipeline {
 
             environment {
                 SOURCE_DIR = sh(script: "echo ${params.LBU}-${params.SERVER_NODE}", , returnStdout: true).trim()
+                TARGET_HOST = sh(script: "echo ${params.SERVER_NODE}", , returnStdout: true).trim()
             }
 
             steps {
@@ -30,7 +31,6 @@ pipeline {
                         ])
                     ])                
                     TARGET_NODE = SOURCE_DIR
-                    TARGET_HOST = "${params.SERVER_NODE}"
                     echo "Preparing config files for ${SOURCE_DIR}."
                     sh 'pwd'
                     sh "mkdir ${CONFIG_DIR}"
