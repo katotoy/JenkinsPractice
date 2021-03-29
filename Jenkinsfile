@@ -69,8 +69,8 @@ pipeline {
                         remote.user = userName
                         remote.identityFile = identifyFile
                         stage("SSH Steps Rocks!") {
-                            sshPut remote: remote, from: CONFIG_DIR, into: '/tmp/'
                             sshRemove remote: remote, path: CONFIG_DIR
+                            sshPut remote: remote, from: CONFIG_DIR, into: '/tmp/'
                         }
                     }
                 }
