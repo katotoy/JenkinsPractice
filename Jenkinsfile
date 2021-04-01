@@ -39,6 +39,7 @@ pipeline {
                     echo 'Copying templates config to target directory'
                     sh "cp -vR ./${params.LBU}/. ${CONFIG_DIR}"
                     sh "ls -ll ${CONFIG_DIR}"
+                    echo 'Hello'
                 }
             }
         }
