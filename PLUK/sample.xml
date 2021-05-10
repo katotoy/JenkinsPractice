@@ -1,7 +1,5 @@
 <node>
-    <setting1>${ip_address}</setting1>
-
     <server>
-        PLUK master branch
+        PLUK-UAT-AZ1-68
     </server>
 </node>
