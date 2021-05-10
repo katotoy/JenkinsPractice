@@ -1,8 +1,0 @@
-node_id,setting_name,value
-all,ocee_license,12345
-PLUK-68,ip_address,192.168.0.15
-PLUK-68,port,8084
-PLUK-69,ip_address,192.168.0.16
-PLUK-69,port,8095
-PLUK-100,ip_address,192.168.1.17
-PLUK-100,port,9085
